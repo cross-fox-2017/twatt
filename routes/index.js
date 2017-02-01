@@ -1,13 +1,8 @@
 var express = require('express');
 var router = express.Router();
-const tweet = require('../helper/twitterHelper');
+const tweet = require('../controller/controller.twatt');
 
 /* GET home page. */
-router.get('/:search', function(req, res, next) {
-  console.log(req.params.search);
-  tweet.getTweet(req.params.search, function(data){
-    res.json(data)
-  })
-});
+router.get('/:search', tweet.search);
 
 module.exports = router;
