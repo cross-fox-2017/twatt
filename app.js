@@ -1,12 +1,13 @@
 const express = require('express')
 const app = express()
 const router = express.Router()
+const config = require('./config.js')
 const Twit = require('twit')
 const T = new Twit({
-  consumer_key:         'AxfRTwgEoMXhDrt5jAocx33wJ',
-  consumer_secret:      'mkf2zKVK4SOFaf4boBNDLGFwwvloYjjRAlyjo1Yiu5gm5Vjv2N',
-  access_token:         '147970158-35cyWiv0ub2jvpMUZdee1rOszdW8qggWQCBwmvlC',
-  access_token_secret:  'hNIuhxyfE0vebVAqUnNnQSxhoOVhweaqaogoiHS4howrt',
+  consumer_key:         config.consumer_key,
+  consumer_secret:      config.consumer_secret,
+  access_token:         config.access_token,
+  access_token_secret:  config.access_token_secret,
   timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
 })
 
