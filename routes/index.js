@@ -13,9 +13,9 @@ var client = new Twitter({
 
 /* GET home page. */
 
-router.get('/', function(req, res, next) {
-  let search = {screen_name: req.params.search}
-  client.get('statuses/user_timeline', search , function(error, tweets, response) {
+router.get('/search', function(req, res, next) {
+  let search = {q: req.query.q}
+  client.get('search/tweets', search , function(error, tweets, response) {
     if (!error) {
       res.json(tweets);
     }
