@@ -20,8 +20,7 @@ router.get('/search',function(req, res) {
 
   client.get('search/tweets', {q: searchQuery}, function(error, tweets, response) {
     const result = JSON.parse(response.body)
-    console.log({result})
-    res.send(tweets)
+    res.send({result})
   })
 
 })
