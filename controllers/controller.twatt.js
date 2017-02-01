@@ -8,3 +8,5 @@ var controllerTweet = {
     })
   }
 }
+
+module.exports = controllerTweet
