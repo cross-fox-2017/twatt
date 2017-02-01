@@ -1,7 +1,7 @@
 ////////// TWAT CHALLENGE ///////////////
 const express = require('express');
 const router = express.Router();
-const twitter = require('twitter');
+const Twitter = require('twitter');
 var config = require('../config.json')
 
 var client = new Twitter({
@@ -11,22 +11,20 @@ var client = new Twitter({
   access_token_secret: config.access_token_secret
 });
 
-router.get('/search', function (res, req) {
-  var search_query = req.query.q
+router.get('/search', function (req, res, next) {
+  var searchQuery = req.query.q
 
-  client.get('statuses/user_timeline', params, function(error, tweets, response) {
-    if (!error) {
-      res.send(tweets);
-    }
+  client.get('search/tweets', {q: searchQuery}, function(error, tweets, response) {
+    if(error) throw error
+    res.send(tweets)
   })
 
 })
 
 
-client.get('api/twitter/callback', function(error, tweets, response) {
-    res.send(tweets);
+router.get('api/twitter/callback', function(req, res, next) {
+    res.send('wrong');
 })
 
 
 module.exports = router;
-////////////////////////////////////////////
